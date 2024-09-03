@@ -37,6 +37,8 @@ HWND globalButtonClearSession = {0};
 HWND globalButtonDot = {0};
 HWND globalButtonBackSpace = {0};
 
+// GLOBAL VARIABLES //
+
 char enteredNumBuffer[10];
 short int globalIsNumEntered = FALSE;
 short int *pGlobalIsNumEntered = &globalIsNumEntered;
@@ -49,7 +51,6 @@ short int *pGlobalIsFirstNum = &globalIsFirstNum;
 
 short int globalIsMinusSymbolBeforeNum = FALSE;
 short int *pGlobalIsMinusSymbolBeforeNum = &globalIsNumEntered;
-
 
 double globalResultNum = 0;
 double * pGlobalResultNum = &globalResultNum;
@@ -266,10 +267,9 @@ LRESULT CALLBACK WindowProc(HWND windowHandle, UINT msg, WPARAM wParam, LPARAM l
 
                     case ID_BUTTON_PLUS:
 
-                        // Check, if for the first time, minus '-' sign was pressed before so that
-                        // the number can be subtracted instead of addition because -x + y = -z...
-                        // The way I approached this is by just converting the number to it's 
-                        // negative number...
+                        // Check, if for the first time, minus '-' sign was pressed so that
+                        // the number is subtracted instead of adding it as -x + y = -z...
+                        // The way I approached this is by converting it to it's negative number... 
                         if(globalIsMinusSymbolBeforeNum == TRUE) 
                         {
                             globalIsFirstNum = FALSE;
